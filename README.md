@@ -24,8 +24,59 @@ A computational tool designed to assist engineers in determining optimal rock su
 ├── team.html           # Team members page
 ├── style.css           # Shared stylesheet with dark mode support
 ├── script.js           # Calculator logic and interactions
+├── config.js           # Application configuration
+├── package.json        # Node.js dependencies and scripts
+├── vercel.json         # Vercel deployment configuration
+├── netlify.toml        # Netlify deployment configuration
+├── build.js            # Build script
+├── .gitignore          # Git ignore rules
+├── DEPLOYMENT.md       # Deployment guide
 └── README.md           # Project documentation
 ```
+
+## Deployment
+
+This project can be deployed to multiple platforms:
+
+### GitHub Pages
+- Automatically deploys via GitHub Actions on push to `main` branch
+- See `.github/workflows/deploy.yml` for configuration
+
+### Vercel
+```bash
+npm run deploy:vercel
+```
+
+### Netlify
+```bash
+npm run deploy:netlify
+```
+
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Development
+
+### Local Development Server
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+# Server will start on http://localhost:3000
+```
+
+### Build
+```bash
+npm run build
+```
+
+## Configuration
+
+- **Framework Preset**: Static Site (No framework)
+- **Build Command**: `npm run build` (validates files)
+- **Output Directory**: `.` (current directory)
+- **Environment Variables**: See `_env.example` and `config.js`
 
 ## Usage
 

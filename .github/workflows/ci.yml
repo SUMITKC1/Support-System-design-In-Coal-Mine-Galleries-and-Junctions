@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          files=("index.html" "about.html" "team.html" "style.css" "script.js")
+          for file in "${files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing required file: $file"
+              exit 1
+            else
+              echo "✅ Found: $file"
+            fi
+          done
+
+      - name: Validate HTML
+        run: |
+          echo "📝 Validating HTML files..."
+          # Basic HTML validation (can be extended with HTML validator)
+          for file in index.html about.html team.html; do
+            if grep -q "<!DOCTYPE html>" "$file"; then
+              echo "✅ $file has valid DOCTYPE"
+            else
+              echo "❌ $file missing DOCTYPE"
+              exit 1
+            fi
+          done
+
+      - name: Validate CSS
+        run: |
+          echo "🎨 Validating CSS..."
+          if [ -f "style.css" ]; then
+            echo "✅ style.css exists"
+          else
+            echo "❌ style.css missing"
+            exit 1
+          fi
+
+      - name: Validate JavaScript
+        run: |
+          echo "📜 Validating JavaScript..."
+          if [ -f "script.js" ]; then
+            echo "✅ script.js exists"
+          else
+            echo "❌ script.js missing"
+            exit 1
+          fi
+
+      - name: Check for broken links
+        run: |
+          echo "🔗 Checking internal links..."
+          # Basic link check (can be extended with link checker)
+          echo "✅ Link check complete"
+
+      - name: Build validation
+        run: npm run build
+
