@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Project - Major Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Major Project</div>
+            <div class="nav-links-wrapper">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About the Project</a></li>
+                    <li><a href="team.html">Team Members</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-toggle-slider"></span>
+                    </button>
+                    <button class="hamburger" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="content-section">
+        <div class="container">
+            <h1>About the Project</h1>
+            
+            <div class="card content-card">
+                <h2>Abstract</h2>
+                <p>The project presents a semi-empirical, computation-aided approach to design roof-bolt support for underground coal mine galleries and junctions. It links rock mass classification (RMR/Q) with simplified CMRI–ISM style rock-load relations and translates them into a transparent calculator (Excel + Python), aiming for safe, economical, and field-friendly design guidance.</p>
+            </div>
+
+            <div class="card content-card">
+                <h2>Problem Statement</h2>
+                <p>Roof instability and roof-falls are leading hazards in Indian underground coal mines, especially in galleries and stress-amplifying junctions. Prescriptive Systematic Support Rules (SSR) may be non-optimal across variable geology—causing either under-support (safety risk) or over-support (cost). A site-aware, semi-empirical workflow is needed to relate measured/geological inputs to support density and bolt spacing.</p>
+            </div>
+
+            <div class="card content-card">
+                <h2>Objectives</h2>
+                <ul class="content-list">
+                    <li>Identify geological and geotechnical parameters influencing roof stability in galleries/junctions.</li>
+                    <li>Review and adopt empirical systems (CMRI–ISM RMR, Bieniawski RMR, Q-system) for rock-load estimation and support selection.</li>
+                    <li>Develop governing equations and an Excel/Python computation flow for rock load, effective bolt capacity, spacing, and density.</li>
+                    <li>Outline validation against literature/case data (e.g., Monnet Ispat, Raigarh) and plan sensitivity checks.</li>
+                    <li>Deliver a simple interface that field engineers can use without advanced coding.</li>
+                </ul>
+            </div>
+
+            <div class="card content-card">
+                <h2>Methodology / Approach</h2>
+                
+                <h3>1. Data & Theory</h3>
+                <p>Consolidate CMRI–ISM and RMR/Q guidance, DGMS context, and case literature.</p>
+
+                <h3>2. Parameters</h3>
+                <p>RMR (20–80 typical), immediate roof thickness (≈1–5 m), bolt capacity (≈60–120 kN), FoS (≈1.3–1.6), junction factor Jf (≈1.3–1.6), span.</p>
+
+                <h3>3. Base Equations</h3>
+                <ul class="content-list">
+                    <li><strong>Rock load:</strong> RL = 0.1 × (100 − RMR) × t (t/m²)</li>
+                    <li><strong>Effective capacity:</strong> C_eff(kN) = C_b × η_b × η_p; C_eff(t) = C_eff(kN)/9.80665</li>
+                    <li><strong>Spacing (square grid):</strong> S = sqrt( C_eff(t) / (RL × FoS × J_f) )</li>
+                    <li><strong>Support density:</strong> C_eff(t) / S²</li>
+                </ul>
+
+                <h3>4. Excel Prototype → Python Automation</h3>
+                <p>Excel for clarity and quick trials; Python for batch runs, plots, and (future) UI.</p>
+
+                <h3>5. Validation & Calibration</h3>
+                <p>Compare spacing/support density with CMRI–ISM practice and a literature case (Monnet Ispat); adjust η_b, η_p, J_f ranges if required.</p>
+            </div>
+
+            <div class="card content-card">
+                <h2>Identification (Reference Mine, Materials, Software)</h2>
+                
+                <h3>Reference</h3>
+                <p>Monnet Ispat underground coal mine, Raigarh (bord & pillar; depth ~80–120 m; laminated shale/sandstone roofs; RMR ~50–70; mechanical/resin bolts used).</p>
+
+                <h3>Materials</h3>
+                <ul class="content-list">
+                    <li>Mechanical bolts (≈22 mm × 1.8–2.4 m, ~80 kN)</li>
+                    <li>Resin-grouted bolts (≈22 mm × 2.0 m, ~100 kN)</li>
+                    <li>Cable bolts (≈28 mm × 4–6 m, ~200 kN)</li>
+                </ul>
+
+                <h3>Software</h3>
+                <p>Excel (transparent formulas, charts), Python (pandas/numpy/matplotlib; optional Tkinter), CSV I/O for integration.</p>
+            </div>
+
+            <div class="card content-card">
+                <h2>Validation Plan</h2>
+                <ul class="content-list">
+                    <li>Literature comparison (CMRI–ISM guidance; Monnet Ispat case study).</li>
+                    <li>Sensitivity analysis (vary RMR, t, bolt capacity, FoS, J_f).</li>
+                    <li>Expert feedback loop to refine coefficients/assumptions.</li>
+                </ul>
+            </div>
+
+            <div class="card content-card">
+                <h2>Expected Outcomes</h2>
+                <ul class="content-list">
+                    <li>Semi-empirical computational model (Excel + Python) for quick, repeatable support design.</li>
+                    <li>Automated procedure reducing manual errors and standardizing decisions.</li>
+                    <li>User-friendly UI for field engineers; basis for future guidelines and research.</li>
+                    <li>Potential extensions: junction/crosscut variants, FLAC3D/RS2 linkage, cost & risk modules.</li>
+                </ul>
+            </div>
+
+            <div class="card content-card">
+                <h2>Limitations</h2>
+                <ul class="content-list">
+                    <li>Uses a simplified linear RL–RMR relation; ignores detailed span/stress anisotropy and heterogeneity.</li>
+                    <li>Assumes uniform roof properties and square bolt grid patterns.</li>
+                    <li>Requires calibration with field monitoring for deployment.</li>
+                </ul>
+            </div>
+
+            <div class="card content-card">
+                <h2>Way Forward</h2>
+                <ul class="content-list">
+                    <li>Integrate full CMRI–ISM formula including unit weight γ and span B.</li>
+                    <li>Derive RMR internally from sub-parameters (RQD, spacing, condition, groundwater, orientation).</li>
+                    <li>Allow rectangular/staggered patterns (Sx ≠ Sy) and junction-specific layouts.</li>
+                    <li>Field calibration, automation, database of typical strata/bolts, and cost–safety optimization.</li>
+                </ul>
+            </div>
+
+            <div class="card content-card">
+                <h2>References</h2>
+                <ul class="content-list references-list">
+                    <li>Paul et al., 2012 — Validation of RMR-based support design, Monnet Ispat (Raigarh), case study.</li>
+                    <li>Bieniawski, 1989 — Engineering Rock Mass Classifications.</li>
+                    <li>Barton, 2002 — Q-value correlations and tunnel design.</li>
+                    <li>CMRI/DGMS guidance for Indian coal measures.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year">2024</span> Major Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Project - Roof Bolt Support Design Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Major Project</div>
+            <div class="nav-links-wrapper">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About the Project</a></li>
+                    <li><a href="team.html">Team Members</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-toggle-slider"></span>
+                    </button>
+                    <button class="hamburger" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Designing Roof Bolt Support for Underground Coal Mine Galleries and Junctions</h1>
+            <p class="hero-description">A computational tool designed to assist engineers in determining optimal rock support parameters for underground excavations. Calculate rock load, effective support capacity, and recommended spacing based on RMR classification and bolt parameters.</p>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="about-preview-section">
+        <div class="container">
+            <div class="card about-preview-card">
+                <h2>About the Project</h2>
+                <p>The project presents a semi-empirical, computation-aided approach to design roof-bolt support for underground coal mine galleries and junctions. It links rock mass classification (RMR/Q) with simplified CMRI–ISM style rock-load relations and translates them into a transparent calculator, aiming for safe, economical, and field-friendly design guidance.</p>
+                <a href="about.html" class="btn-read-more">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2>Support Design Calculator</h2>
+            <div class="card input-card">
+                <form id="calculator-form">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="rmr">RMR (0-100)</label>
+                            <input type="number" id="rmr" name="rmr" min="0" max="100" step="0.1" required>
+                            <span class="error-message" id="rmr-error"></span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="roof-thickness">Roof Thickness t (m)</label>
+                            <input type="number" id="roof-thickness" name="roof-thickness" min="0" step="0.01" required>
+                            <span class="error-message" id="roof-thickness-error"></span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="bolt-capacity">Bolt Capacity Cb (kN)</label>
+                            <input type="number" id="bolt-capacity" name="bolt-capacity" min="0" step="0.1" required>
+                            <span class="error-message" id="bolt-capacity-error"></span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="fos">Factor of Safety (FoS)</label>
+                            <input type="number" id="fos" name="fos" min="0" step="0.01" value="1.4" required>
+                            <span class="error-message" id="fos-error"></span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="bolt-efficiency">Bolt efficiency ηb</label>
+                            <input type="number" id="bolt-efficiency" name="bolt-efficiency" min="0" max="1" step="0.01" value="0.85" required>
+                            <span class="error-message" id="bolt-efficiency-error"></span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="plate-efficiency">Plate efficiency ηp</label>
+                            <input type="number" id="plate-efficiency" name="plate-efficiency" min="0" max="1" step="0.01" value="0.95" required>
+                            <span class="error-message" id="plate-efficiency-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group full-width">
+                        <label for="location">Location</label>
+                        <select id="location" name="location" required>
+                            <option value="1.0">Gallery (Jf = 1.0)</option>
+                            <option value="1.3">Junction (Jf = 1.3)</option>
+                            <option value="1.5">Junction – stricter (Jf = 1.5)</option>
+                        </select>
+                        <span class="error-message" id="location-error"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn-check" id="check-button">Check</button>
+                </form>
+            </div>
+            
+            <div id="results-card" class="card results-card hidden">
+                <h3>Results</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <span class="result-label">Rock Load RL (t/m²)</span>
+                        <span class="result-value" id="rock-load">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Effective capacity (kN)</span>
+                        <span class="result-value" id="effective-capacity-kn">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Effective capacity (t)</span>
+                        <span class="result-value" id="effective-capacity-t">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Suggested square spacing S (m)</span>
+                        <span class="result-value" id="spacing">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Support density (t/m² at S)</span>
+                        <span class="result-value" id="support-density">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year">2024</span> Major Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
