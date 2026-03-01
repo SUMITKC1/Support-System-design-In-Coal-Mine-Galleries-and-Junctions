@@ -611,6 +611,111 @@ main {
     font-family: 'Courier New', monospace;
 }
 
+.reference-block {
+    margin-top: 2rem;
+    border-top: 1px solid var(--card-border);
+    padding-top: 1.5rem;
+}
+
+.grid-diagram-block {
+    margin-top: 2rem;
+    border-top: 1px solid var(--card-border);
+    padding-top: 1.5rem;
+}
+
+.grid-diagram-block h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.grid-diagram-note {
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.grid-diagram-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.grid-diagram-wrap {
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 0.75rem;
+    overflow-x: auto;
+}
+
+#grid-diagram-canvas {
+    display: block;
+    width: 100%;
+    max-width: 620px;
+    height: auto;
+    margin: 0 auto;
+    background: #f7f7f7;
+    border-radius: 8px;
+}
+
+.reference-block h4 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.reference-table th,
+.reference-table td {
+    padding: 0.75rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.reference-table th {
+    background-color: var(--result-bg);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.reference-table td {
+    color: var(--text-secondary);
+}
+
+.result-value.status-good {
+    color: #1b5e20;
+}
+
+.result-value.status-bad {
+    color: #b71c1c;
+}
+
+.result-value.status-neutral {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .result-value.status-good {
+    color: #7ed957;
+}
+
+[data-theme="dark"] .result-value.status-bad {
+    color: #ff867c;
+}
+
 /* Team Members */
 .team-grid {
     display: grid;
@@ -841,5 +946,10 @@ main {
 
     .team-grid {
         grid-template-columns: 1fr;
+    }
+
+    .grid-diagram-meta {
+        flex-direction: column;
+        gap: 0.35rem;
     }
 }

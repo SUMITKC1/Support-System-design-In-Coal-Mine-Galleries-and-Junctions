@@ -5,6 +5,7 @@ A computational tool designed to assist engineers in determining optimal rock su
 ## Features
 
 - **Support Design Calculator**: Calculate rock load, effective support capacity, and recommended spacing based on RMR classification and bolt parameters
+- **Grid Spacing Check**: Optionally enter a proposed bolt grid spacing and verify if it is adequate against computed maximum spacing
 - **Dark Mode Support**: Toggle between light and dark themes
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 - **Clean Modern UI**: Professional, minimal design with smooth animations
@@ -88,9 +89,10 @@ npm run build
    - Factor of Safety (FoS)
    - Bolt efficiency ηb
    - Plate efficiency ηp
+   - Proposed grid spacing Sg (optional)
    - Location (Gallery/Junction)
 3. Click "Check" to calculate results
-4. View the calculated rock load, effective capacity, spacing, and support density
+4. View the calculated rock load, effective capacity, spacing, support density, and optional grid adequacy check
 
 ## Calculation Formulas
 
@@ -99,6 +101,7 @@ npm run build
 - **Effective Capacity (t)**: C_eff(t) = C_eff(kN) / 9.80665
 - **Spacing**: S = √(C_eff(t) / (RL × FoS × J_f))
 - **Support Density**: C_eff(t) / S²
+- **Achieved FoS at Proposed Grid**: C_eff(t) / (RL × Jf × Sg²)
 
 ## Team Members
 
@@ -116,4 +119,3 @@ This project is part of a Major Project assignment.
 - Bieniawski, 1989 — Engineering Rock Mass Classifications
 - Barton, 2002 — Q-value correlations and tunnel design
 - CMRI/DGMS guidance for Indian coal measures
-
