@@ -2,15 +2,12 @@
   "name": "support-system-design-calculator",
   "version": "1.0.0",
   "description": "A computational tool for designing roof-bolt support for underground coal mine galleries and junctions",
-  "main": "index.html",
+  "private": true,
   "scripts": {
-    "start": "npx serve .",
-    "dev": "npx serve . -l 3000",
-    "build": "node build.js",
-    "predeploy": "npm run build",
-    "deploy:vercel": "vercel --prod",
-    "deploy:netlify": "netlify deploy --prod",
-    "deploy:github": "npm run build && git add . && git commit -m 'Build for deployment' && git push"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "keywords": [
     "mining",
@@ -27,11 +24,13 @@
     "type": "git",
     "url": "https://github.com/SUMITKC1/Support-System-design-In-Coal-Mine-Galleries-and-Junctions.git"
   },
-  "devDependencies": {
-    "serve": "^14.2.1"
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.18.0"
   }
 }
 
