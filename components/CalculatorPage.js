@@ -392,10 +392,10 @@ export function CalculatorPage() {
 
     const yStart = top;
     const yEnd = top + dy;
-    const xBurden = left - 28;
-    drawArrow(ctx, xBurden, yStart, xBurden, yEnd);
-    drawArrow(ctx, xBurden, yEnd, xBurden, yStart);
-    drawLabelBox(ctx, `Burden = ${roundValue(displaySpacing, 4)} m`, xBurden + 12, yStart + dy / 2 + 4);
+    const xSpacingVertical = left - 28;
+    drawArrow(ctx, xSpacingVertical, yStart, xSpacingVertical, yEnd);
+    drawArrow(ctx, xSpacingVertical, yEnd, xSpacingVertical, yStart);
+    drawLabelBox(ctx, `Spacing = ${roundValue(displaySpacing, 4)} m`, xSpacingVertical + 12, yStart + dy / 2 + 4);
 
     const pxPerMeter = dx / Math.max(displaySpacing, 0.0001);
     drawLabelBox(ctx, `Visual scale: 1 m ≈ ${roundValue(pxPerMeter, 1)} px`, width - 208, height - 12);
@@ -597,14 +597,14 @@ export function CalculatorPage() {
               <div className="grid-diagram-block">
                 <h4>Grid Pattern Diagram</h4>
                 <p className="grid-diagram-note">
-                  Dots represent bolt points in a square pattern. Burden is shown as row-to-row distance.
+                  Dots represent bolt points in a square pattern. Row-to-row distance is shown as spacing.
                 </p>
                 <div className="grid-diagram-meta">
                   <span>
                     Spacing: <strong>{roundValue(results.diagramSpacing, 4)}</strong> m
                   </span>
                   <span>
-                    Burden: <strong>{roundValue(results.diagramSpacing, 4)}</strong> m
+                    Row spacing: <strong>{roundValue(results.diagramSpacing, 4)}</strong> m
                   </span>
                   <span>
                     Gap vs design S:{" "}
