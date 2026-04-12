@@ -123,7 +123,7 @@ function LineChart({ title, xLabel, yLabel, data, yKey, color }) {
             <g key={i}>
               <line x1={margin.left} y1={y} x2={width - margin.right} y2={y} stroke="#d8d8d8" strokeWidth="1" />
               <text x={margin.left - 8} y={y + 4} textAnchor="end" fontSize="10" fill="#777">
-                {roundValue(yValue, 2)}
+                {roundValue(yValue, 1)}
               </text>
             </g>
           );
@@ -388,14 +388,14 @@ export function CalculatorPage() {
     const ySpacing = top + (rows - 1) * dy + 30;
     drawArrow(ctx, xStart, ySpacing, xEnd, ySpacing);
     drawArrow(ctx, xEnd, ySpacing, xStart, ySpacing);
-    drawLabelBox(ctx, `Spacing = ${roundValue(displaySpacing, 4)} m`, xStart + 4, ySpacing - 8);
+    drawLabelBox(ctx, `Spacing = ${roundValue(displaySpacing, 1)} m`, xStart + 4, ySpacing - 8);
 
     const yStart = top;
     const yEnd = top + dy;
     const xSpacingVertical = left - 28;
     drawArrow(ctx, xSpacingVertical, yStart, xSpacingVertical, yEnd);
     drawArrow(ctx, xSpacingVertical, yEnd, xSpacingVertical, yStart);
-    drawLabelBox(ctx, `Spacing = ${roundValue(displaySpacing, 4)} m`, xSpacingVertical + 12, yStart + dy / 2 + 4);
+    drawLabelBox(ctx, `Burden = ${roundValue(displaySpacing, 1)} m`, xSpacingVertical + 12, yStart + dy / 2 + 4);
 
     const pxPerMeter = dx / Math.max(displaySpacing, 0.0001);
     drawLabelBox(ctx, `Visual scale: 1 m ≈ ${roundValue(pxPerMeter, 1)} px`, width - 208, height - 12);
@@ -581,13 +581,13 @@ export function CalculatorPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr><td>RL_simplified (t/m^2)</td><td>{roundValue(results.rockLoadSimple, 4)}</td></tr>
-                        <tr><td>Pr_CMRI (t/m^2)</td><td>{roundValue(results.rockLoadCMRI, 4)}</td></tr>
-                        <tr><td>C_eff (kN)</td><td>{roundValue(results.effectiveCapacityKN, 3)}</td></tr>
-                        <tr><td>Suggested Spacing S (m)</td><td>{roundValue(results.spacing, 4)}</td></tr>
-                        <tr><td>Support Density (t/m^2)</td><td>{roundValue(results.supportDensity, 4)}</td></tr>
-                        <tr><td>Achieved Fs at S (design)</td><td>{roundValue(calculateAchievedFoS(results.effectiveCapacityT, results.rockLoadCMRI, Number.parseFloat(form.location), results.spacing), 4)}</td></tr>
-                        <tr><td>Pr_junction (t/m^2)</td><td>{roundValue(results.rockLoadCMRI * Number.parseFloat(form.location), 4)}</td></tr>
+                        <tr><td>RL_simplified (t/m^2)</td><td>{roundValue(results.rockLoadSimple, 1)}</td></tr>
+                        <tr><td>Pr_CMRI (t/m^2)</td><td>{roundValue(results.rockLoadCMRI, 1)}</td></tr>
+                        <tr><td>C_eff (kN)</td><td>{roundValue(results.effectiveCapacityKN, 1)}</td></tr>
+                        <tr><td>Suggested Spacing S (m)</td><td>{roundValue(results.spacing, 1)}</td></tr>
+                        <tr><td>Support Density (t/m^2)</td><td>{roundValue(results.supportDensity, 1)}</td></tr>
+                        <tr><td>Achieved Fs at S (design)</td><td>{roundValue(calculateAchievedFoS(results.effectiveCapacityT, results.rockLoadCMRI, Number.parseFloat(form.location), results.spacing), 1)}</td></tr>
+                        <tr><td>Pr_junction (t/m^2)</td><td>{roundValue(results.rockLoadCMRI * Number.parseFloat(form.location), 1)}</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -601,10 +601,10 @@ export function CalculatorPage() {
                 </p>
                 <div className="grid-diagram-meta">
                   <span>
-                    Spacing: <strong>{roundValue(results.diagramSpacing, 4)}</strong> m
+                    Spacing: <strong>{roundValue(results.diagramSpacing, 1)}</strong> m
                   </span>
                   <span>
-                    Row spacing: <strong>{roundValue(results.diagramSpacing, 4)}</strong> m
+                    Burden: <strong>{roundValue(results.diagramSpacing, 1)}</strong> m
                   </span>
                   <span>
                     Gap vs design S:{" "}
@@ -652,9 +652,9 @@ export function CalculatorPage() {
                     <tbody>
                       {seriesRows.map((row) => (
                         <tr key={row.x}>
-                          <td>{roundValue(row.x, 4)}</td>
-                          <td>{roundValue(row.rockLoad, 4)}</td>
-                          <td>{roundValue(row.spacing, 6)}</td>
+                          <td>{roundValue(row.x, 1)}</td>
+                          <td>{roundValue(row.rockLoad, 1)}</td>
+                          <td>{roundValue(row.spacing, 1)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -781,11 +781,11 @@ export function CalculatorPage() {
                           <tr key={h.id}>
                             <td>{new Date(h.createdAt).toLocaleString()}</td>
                             <td>{roundValue(h.inputs.rmr, 1)}</td>
-                            <td>{roundValue(h.outputs.rockLoadCMRI, 4)}</td>
-                            <td>{roundValue(h.outputs.spacing, 4)}</td>
-                            <td>{roundValue(h.inputs.fos, 2)}</td>
-                            <td>{roundValue(h.inputs.jf, 2)}</td>
-                            <td>{h.inputs.proposedGridSpacing == null ? "-" : roundValue(h.inputs.proposedGridSpacing, 3)}</td>
+                            <td>{roundValue(h.outputs.rockLoadCMRI, 1)}</td>
+                            <td>{roundValue(h.outputs.spacing, 1)}</td>
+                            <td>{roundValue(h.inputs.fos, 1)}</td>
+                            <td>{roundValue(h.inputs.jf, 1)}</td>
+                            <td>{h.inputs.proposedGridSpacing == null ? "-" : roundValue(h.inputs.proposedGridSpacing, 1)}</td>
                             <td>{h.outputs.spacingAdequacy}</td>
                           </tr>
                         ))
