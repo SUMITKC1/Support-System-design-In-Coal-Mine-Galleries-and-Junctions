@@ -395,7 +395,7 @@ export function CalculatorPage() {
     const xSpacingVertical = left - 28;
     drawArrow(ctx, xSpacingVertical, yStart, xSpacingVertical, yEnd);
     drawArrow(ctx, xSpacingVertical, yEnd, xSpacingVertical, yStart);
-    drawLabelBox(ctx, `Burden = ${roundValue(displaySpacing, 1)} m`, xSpacingVertical + 12, yStart + dy / 2 + 4);
+    drawLabelBox(ctx, `Spacing = ${roundValue(displaySpacing, 1)} m`, xSpacingVertical + 12, yStart + dy / 2 + 4);
 
     const pxPerMeter = dx / Math.max(displaySpacing, 0.0001);
     drawLabelBox(ctx, `Visual scale: 1 m ≈ ${roundValue(pxPerMeter, 1)} px`, width - 208, height - 12);
@@ -603,9 +603,7 @@ export function CalculatorPage() {
                   <span>
                     Spacing: <strong>{roundValue(results.diagramSpacing, 1)}</strong> m
                   </span>
-                  <span>
-                    Burden: <strong>{roundValue(results.diagramSpacing, 1)}</strong> m
-                  </span>
+              
                   <span>
                     Gap vs design S:{" "}
                     <strong>{roundValue((results.diagramSpacing / Math.max(results.spacing, 0.0001)) * 100, 1)}%</strong>
